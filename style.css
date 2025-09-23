@@ -6,7 +6,7 @@ body {
 }
 
 header {
-  background: #333;
+  background: #d14a4a;
   color: #fff;
   padding: 10px;
   text-align: center;
@@ -44,6 +44,14 @@ section.active {
   border-radius: 8px;
 }
 
+.product-image {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 4px;
+  margin-bottom: 10px;
+}
+
 button.add-btn {
   background: green;
   color: white;
@@ -56,8 +64,20 @@ button.add-btn {
 #expense-form {
   margin-bottom: 20px;
 }
+#expenseChart{
+  max-width: 600px;   /* limit width */
+  max-height: 600px;  /* limit height */
+  margin: 40px auto;  /* center it */
+  display: block;
+}
 
 #expense-list {
   list-style: none;
   padding: 0;
+}
+#report{
+   max-width: 800;   /* limit width */
+  max-height: 600px;  /* limit height */
+  margin: 40px auto;  /* center it */
+  display: block;
 }

@@ -4,6 +4,11 @@ function showSection(id) {
   document.getElementById(id).classList.add("active");
 }
 
+// Format number with commas
+function formatPrice(number) {
+  return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
+
 // Data
 let tray = [];
 let expenses = [];
@@ -20,8 +25,9 @@ async function loadProducts() {
     const div = document.createElement("div");
     div.className = "product";
     div.innerHTML = `
+      <img src="${p.image}" alt="${p.name}" class="product-image">
       <h3>${p.name}</h3>
-      <p>Price: ${p.price} KES</p>
+      <p>Price: ${formatPrice(p.price)} KES</p>
       <button class="add-btn" onclick="addToTray('${p.id}', '${p.name}', ${p.price})">Add to Tray</button>
     `;
     list.appendChild(div);
@@ -40,10 +46,10 @@ function renderTray() {
   let total = 0;
   tray.forEach((item, index) => {
     total += item.price;
-    container.innerHTML += `<p>${item.name} - ${item.price} KES 
-      <button onclick="removeFromTray(${index})">Remove</button></p>`;
+    container.innerHTML += `<p>${item.name} - ${formatPrice(item.price)} KES 
+      <button onclick="removeTrayItem(${index})">Remove</button></p>`;
   });
-  document.getElementById("tray-total").innerText = total;
+  document.getElementById("tray-total").innerText = formatPrice(total);
 }
 
 function removeFromTray(index) {
@@ -66,7 +72,7 @@ function finalizeTray() {
   const stockCost = Math.round(orderTotal * 0.6);
   addExpense("Stock Purchase", stockCost, new Date().toISOString().split("T")[0], "Stock");
 
-  alert(`Purchase completed! Total: ${orderTotal} KES`);
+  alert(`Purchase completed! Total: ${formatPrice(orderTotal)} KES`);
 
   tray = [];
   renderTray();
@@ -95,7 +101,7 @@ function renderExpenses() {
   const list = document.getElementById("expense-list");
   list.innerHTML = "";
   expenses.forEach(exp => {
-    list.innerHTML += `<li>${exp.date} - ${exp.name}: ${exp.amount} KES (${exp.category})</li>`;
+    list.innerHTML += `<li>${exp.date} - ${exp.name}: ${formatPrice(exp.amount)} KES (${exp.category})</li>`;
   });
 }
 

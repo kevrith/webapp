@@ -2,38 +2,64 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Expense Tracker with Currency Conversion</title>
+  <title>Mini Multistore with Tray & Expense Tracker</title>
   <link rel="stylesheet" href="style.css">
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
-  <div class="container">
-    <h1>Expense Tracker</h1>
+  <header>
+    <h1>Mini Multistore WebApp</h1>
+    <nav>
+      <button onclick="showSection('store')">Store</button>
+      <button onclick="showSection('tray')">Tray</button>
+      <button onclick="showSection('tracker')">Expense Tracker</button>
+      <button onclick="showSection('report')">Profit & Loss</button>
+    </nav>
+  </header>
+
+  <!-- Store Section -->
+  <section id="store" class="active">
+    <h2>Products</h2>
+    <div id="product-list"></div>
+  </section>
+
+  <!-- Tray Section -->
+  <section id="tray">
+    <h2>My Tray</h2>
+    <div id="tray-items"></div>
+    <p><strong>Total:</strong> <span id="tray-total">0</span> KES</p>
+    <button onclick="finalizeTray()">Finalize Purchase</button>
+  </section>
+
+  <!-- Expense Tracker Section -->
+  <section id="tracker">
+    <h2>Expense Tracker</h2>
     <form id="expense-form">
-      <input type="text" id="description" placeholder="Description" required>
-      <input type="number" id="amount" placeholder="Amount" required>
-      <select id="currency" required>
-        <option value="USD">USD</option>
-        <option value="KES">KES</option>
-        <option value="EUR">EUR</option>
-        <option value="GBP">GBP</option>
+      <input type="text" id="expense-name" placeholder="Expense Name" required>
+      <input type="number" id="expense-amount" placeholder="Amount (KES)" required>
+      <input type="date" id="expense-date" required>
+      <select id="expense-category">
+        <option value="Stock">Stock</option>
+        <option value="Rent">Rent</option>
+        <option value="Salaries">Salaries</option>
+        <option value="Utilities">Utilities</option>
       </select>
-      <select id="category" required>
-        <option value="Food">Food</option>
-        <option value="Transport">Transport</option>
-        <option value="Entertainment">Entertainment</option>
-        <option value="Other">Other</option>
-      </select>
-      <input type="date" id="date" required>
       <button type="submit">Add Expense</button>
     </form>
 
-    <h3>Total: <span id="total">0</span> KES</h3>
     <ul id="expense-list"></ul>
+    <canvas id="expenseChart" width="300" height="300"></canvas>
+  </section>
 
-    <canvas id="expenseChart"></canvas>
-  </div>
+  <!-- Profit & Loss Section -->
+  <section id="report">
+    <h2>Profit & Loss Report</h2>
+    <p><strong>Total Revenue:</strong> <span id="revenue">0</span> KES</p>
+    <p><strong>Total Expenses:</strong> <span id="expenses">0</span> KES</p>
+    <p><strong>Net Profit/Loss:</strong> <span id="net">0</span> KES</p>
+
+    <canvas id="reportChart" width="300" height="300"></canvas>
+  </section>
 
   <script src="script.js"></script>
 </body>

@@ -1,114 +1,149 @@
-const expenseForm = document.getElementById("expense-form");
-const expenseList = document.getElementById("expense-list");
-const totalEl = document.getElementById("total");
-const ctx = document.getElementById("expenseChart").getContext("2d");
+// Section switching
+function showSection(id) {
+  document.querySelectorAll("section").forEach(sec => sec.classList.remove("active"));
+  document.getElementById(id).classList.add("active");
+}
 
+// Data
+let tray = [];
 let expenses = [];
-let editingIndex = null;
-let exchangeRates = {};
+let orders = [];
+let expenseChart, reportChart;
 
-// Fetch exchange rates (base USD)
-async function fetchRates(base = "USD") {
-  try {
-    const res = await fetch(`https://open.er-api.com/v6/latest/${base}`);
-    const data = await res.json();
-    exchangeRates = data.rates;
-    console.log("Exchange rates loaded:", exchangeRates);
-  } catch (err) {
-    console.error("Error fetching exchange rates:", err);
-  }
-}
-
-// Convert any currency to KES
-function convertToKES(amount, currency) {
-  if (!exchangeRates["KES"] || !exchangeRates[currency]) return amount;
-  const rateToBase = exchangeRates[currency];
-  const rateKES = exchangeRates["KES"];
-  return (amount / rateToBase) * rateKES;
-}
-
-// Add expense
-expenseForm.addEventListener("submit", e => {
-  e.preventDefault();
-  const description = document.getElementById("description").value;
-  const amount = parseFloat(document.getElementById("amount").value);
-  const currency = document.getElementById("currency").value;
-  const category = document.getElementById("category").value;
-  const date = document.getElementById("date").value;
-
-  const amountKES = convertToKES(amount, currency);
-
-  if (editingIndex !== null) {
-    expenses[editingIndex] = { description, amount, currency, amountKES, category, date };
-    editingIndex = null;
-  } else {
-    expenses.push({ description, amount, currency, amountKES, category, date });
-  }
-
-  renderExpenses();
-  expenseForm.reset();
-});
-
-// Render expenses list
-function renderExpenses() {
-  expenseList.innerHTML = "";
-  let total = 0;
-
-  expenses.forEach((exp, index) => {
-    total += exp.amountKES;
-
-    const li = document.createElement("li");
-    li.innerHTML = `
-      ${exp.date} - ${exp.description} (${exp.category}): ${exp.amount} ${exp.currency} 
-      = ${exp.amountKES.toFixed(2)} KES
-      <span>
-        <button class="edit-btn" onclick="editExpense(${index})">Edit</button>
-        <button class="delete-btn" onclick="deleteExpense(${index})">Delete</button>
-      </span>
+// Load products
+async function loadProducts() {
+  const res = await fetch("products.json");
+  const data = await res.json();
+  const list = document.getElementById("product-list");
+  list.innerHTML = "";
+  data.products.forEach(p => {
+    const div = document.createElement("div");
+    div.className = "product";
+    div.innerHTML = `
+      <h3>${p.name}</h3>
+      <p>Price: ${p.price} KES</p>
+      <button class="add-btn" onclick="addToTray('${p.id}', '${p.name}', ${p.price})">Add to Tray</button>
     `;
-    expenseList.appendChild(li);
+    list.appendChild(div);
   });
-
-  totalEl.textContent = total.toFixed(2);
-  updateChart();
 }
 
-// Edit expense
-window.editExpense = function(index) {
-  const exp = expenses[index];
-  document.getElementById("description").value = exp.description;
-  document.getElementById("amount").value = exp.amount;
-  document.getElementById("currency").value = exp.currency;
-  document.getElementById("category").value = exp.category;
-  document.getElementById("date").value = exp.date;
-  editingIndex = index;
-};
+// Tray logic
+function addToTray(id, name, price) {
+  tray.push({ id, name, price });
+  renderTray();
+}
 
-// Delete expense
-window.deleteExpense = function(index) {
-  expenses.splice(index, 1);
-  renderExpenses();
-};
+function renderTray() {
+  const container = document.getElementById("tray-items");
+  container.innerHTML = "";
+  let total = 0;
+  tray.forEach((item, index) => {
+    total += item.price;
+    container.innerHTML += `<p>${item.name} - ${item.price} KES 
+      <button onclick="removeFromTray(${index})">Remove</button></p>`;
+  });
+  document.getElementById("tray-total").innerText = total;
+}
 
-// Chart.js
-let chart = new Chart(ctx, {
-  type: "pie",
-  data: {
-    labels: [],
-    datasets: [{ data: [], backgroundColor: ["#FF6384", "#36A2EB", "#FFCE56", "#4BC0C0"] }]
+function removeFromTray(index) {
+  tray.splice(index, 1);
+  renderTray();
+}
+
+function finalizeTray() {
+  if (tray.length === 0) {
+    alert("Your tray is empty!");
+    return;
   }
+
+  const orderTotal = tray.reduce((sum, item) => sum + item.price, 0);
+
+  // Record order
+  orders.push({ date: new Date().toISOString().split("T")[0], amount: orderTotal });
+
+  // Auto expense (simulate stock cost = 60% of sales)
+  const stockCost = Math.round(orderTotal * 0.6);
+  addExpense("Stock Purchase", stockCost, new Date().toISOString().split("T")[0], "Stock");
+
+  alert(`Purchase completed! Total: ${orderTotal} KES`);
+
+  tray = [];
+  renderTray();
+  updateReport();
+}
+
+// Expense Tracker
+document.getElementById("expense-form").addEventListener("submit", function(e) {
+  e.preventDefault();
+  const name = document.getElementById("expense-name").value;
+  const amount = parseFloat(document.getElementById("expense-amount").value);
+  const date = document.getElementById("expense-date").value;
+  const category = document.getElementById("expense-category").value;
+  addExpense(name, amount, date, category);
+  this.reset();
 });
+
+function addExpense(name, amount, date, category) {
+  expenses.push({ name, amount, date, category });
+  renderExpenses();
+  updateChart();
+  updateReport();
+}
+
+function renderExpenses() {
+  const list = document.getElementById("expense-list");
+  list.innerHTML = "";
+  expenses.forEach(exp => {
+    list.innerHTML += `<li>${exp.date} - ${exp.name}: ${exp.amount} KES (${exp.category})</li>`;
+  });
+}
 
 function updateChart() {
-  const categories = {};
-  expenses.forEach(exp => {
-    categories[exp.category] = (categories[exp.category] || 0) + exp.amountKES;
-  });
+  const ctx = document.getElementById("expenseChart").getContext("2d");
+  const categories = [...new Set(expenses.map(e => e.category))];
+  const totals = categories.map(cat => 
+    expenses.filter(e => e.category === cat).reduce((sum, e) => sum + e.amount, 0)
+  );
 
-  chart.data.labels = Object.keys(categories);
-  chart.data.datasets[0].data = Object.values(categories);
-  chart.update();
+  if (expenseChart) expenseChart.destroy();
+
+  expenseChart = new Chart(ctx, {
+    type: "pie",
+    data: {
+      labels: categories,
+      datasets: [{
+        data: totals,
+        backgroundColor: ["#f44336", "#2196f3", "#4caf50", "#ff9800"]
+      }]
+    }
+  });
 }
 
-// Initial load
-fetchRates("USD");
+// Profit & Loss Report
+function updateReport() {
+  const revenue = orders.reduce((sum, o) => sum + o.amount, 0);
+  const totalExpenses = expenses.reduce((sum, e) => sum + e.amount, 0);
+  const net = revenue - totalExpenses;
+
+  document.getElementById("revenue").innerText = revenue;
+  document.getElementById("expenses").innerText = totalExpenses;
+  document.getElementById("net").innerText = net;
+
+  const ctx = document.getElementById("reportChart").getContext("2d");
+  if (reportChart) reportChart.destroy();
+  reportChart = new Chart(ctx, {
+    type: "bar",
+    data: {
+      labels: ["Revenue", "Expenses", "Net Profit/Loss"],
+      datasets: [{
+        label: "KES",
+        data: [revenue, totalExpenses, net],
+        backgroundColor: ["#4caf50", "#f44336", "#2196f3"]
+      }]
+    }
+  });
+}
+
+// Init
+loadProducts();

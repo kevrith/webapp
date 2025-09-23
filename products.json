@@ -1,18 +1,44 @@
-[
-  {
-    "description": "Lunch",
-    "amount": 5,
-    "currency": "USD",
-    "amountKES": 635,
-    "category": "Food",
-    "date": "2025-09-15"
-  },
-  {
-    "description": "Taxi",
-    "amount": 300,
-    "currency": "KES",
-    "amountKES": 300,
-    "category": "Transport",
-    "date": "2025-09-16"
-  }
-]
+{
+  "products": [
+    { "id": "1", 
+      "name": "Smartphone",
+      "price": 15000, 
+      "capacity": 20,
+      "sold": 10,
+      "category": "Electronics",
+      "image":"https://bitly.cx/maixm" 
+    },
+    { "id": "2",
+      "name": "Laptop", 
+      "price": 60000,
+      "capacity": 15,
+      "sold": 7,
+      "category": "Electronics",
+      "image": "https://bitly.cx/y2AP"
+    },
+    { "id": "3", 
+      "name": "CCTV Camera", 
+      "price": 10000, 
+      "capacity": 10,
+      "sold": 4,
+      "category": "CCTV",
+      "image":"https://bitly.cx/THJ0"
+    },
+    { "id": "4", 
+      "name": "Headphones", 
+      "price": 3000, 
+      "capacity": 25,
+      "sold": 6,
+      "category": "Electronics",
+      "image":"https://bitly.cx/ijPwO"
+    },
+    { "id": "5", 
+      "name": "Router", 
+      "price": 5000, 
+      "capacity": 50,
+      "sold": 15,
+      "category": "Networking",
+      "image":"https://bitly.cx/I0Xsh"
+    }
+  ]
+}

@@ -68,8 +68,8 @@ function finalizeTray() {
   // Record order
   orders.push({ date: new Date().toISOString().split("T")[0], amount: orderTotal });
 
-  // Auto expense (simulate stock cost = 60% of sales)
-  const stockCost = Math.round(orderTotal * 0.6);
+  // Auto expense (simulate stock cost = 70% of sales. Which gives 30% profit)
+  const stockCost = Math.round(orderTotal * 0.7);
   addExpense("Stock Purchase", stockCost, new Date().toISOString().split("T")[0], "Stock");
 
   alert(`Purchase completed! Total: ${formatPrice(orderTotal)} KES`);

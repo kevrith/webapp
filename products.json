@@ -125,8 +125,8 @@
       "name": "Wireless Keyboard",
       "price": 1000,
       "capacity": 30,
-      "available": 20,
-      "sold": 10,
+      "available": 18,
+      "sold": 12,
       "category": "Accessories",
       "image": "https://ke.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/85/0938323/1.jpg?9361"
     },
@@ -482,95 +482,9 @@
     }
   ],
   "orders": [
-    {
-      "id": "order_1758733706758",
-      "date": "2025-09-24",
-      "items": [
-        {
-          "id": "45",
-          "name": "Dairlyland Chocolate",
-          "price": 2500
-        },
-        {
-          "id": "46",
-          "name": "Stanley Vaccum Flask",
-          "price": 2700
-        },
-        {
-          "id": "48",
-          "name": "Hp USB-C to USB 3.0 Adapter",
-          "price": 2000
-        },
-        {
-          "id": "43",
-          "name": "Top Fry Oil 3L",
-          "price": 800
-        }
-      ],
-      "totalAmount": 8000,
-      "status": "completed"
-    },
-    {
-      "id": "order_1758733728739",
-      "date": "2025-09-24",
-      "items": [
-        {
-          "id": "8",
-          "name": "Power Bank",
-          "price": 4500
-        }
-      ],
-      "totalAmount": 4500,
-      "status": "completed"
-    },
-    {
-      "id": "order_1758742554712",
-      "date": "2025-09-24",
-      "items": [
-        {
-          "id": "9",
-          "name": "Smart Watch",
-          "price": 2500
-        },
-        {
-          "id": "16",
-          "name": "Bluetooth Speaker",
-          "price": 2800
-        },
-        {
-          "id": "19",
-          "name": "SSD 2TB",
-          "price": 13500
-        }
-      ],
-      "totalAmount": 18800,
-      "status": "completed"
-    }
+    
   ],
   "expenses": [
-    {
-      "id": "expense_1758733706802",
-      "name": "Auto Stock Cost",
-      "amount": 5600,
-      "date": "2025-09-24",
-      "category": "Stock",
-      "type": "auto"
-    },
-    {
-      "id": "expense_1758733728775",
-      "name": "Auto Stock Cost",
-      "amount": 3150,
-      "date": "2025-09-24",
-      "category": "Stock",
-      "type": "auto"
-    },
-    {
-      "id": "expense_1758742554760",
-      "name": "Auto Stock Cost",
-      "amount": 13160,
-      "date": "2025-09-24",
-      "category": "Stock",
-      "type": "auto"
-    }
+    
   ]
 }

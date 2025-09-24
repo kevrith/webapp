@@ -1,66 +1,164 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Mini Multistore with Tray & Expense Tracker</title>
-  <link rel="stylesheet" href="style.css">
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kastra Mini Multistore</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
-  <header>
-    <h1>Mini Multistore WebApp</h1>
-    <nav>
-      <button onclick="showSection('store')">Store</button>
-      <button onclick="showSection('tray')">Tray</button>
-      <button onclick="showSection('tracker')">Expense Tracker</button>
-      <button onclick="showSection('report')">Profit & Loss</button>
-    </nav>
-  </header>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <h1><i class="fas fa-store"></i> Kastra Mini Multistore</h1>
+            <nav class="nav-tabs">
+                <button class="nav-btn active" onclick="showSection('store')">
+                    <i class="fas fa-shopping-bag"></i> Store
+                </button>
+                <button class="nav-btn" onclick="showSection('expenses')">
+                    <i class="fas fa-receipt"></i> Expenses
+                </button>
+                <button class="nav-btn" onclick="showSection('reports')">
+                    <i class="fas fa-chart-line"></i> Reports
+                </button>
+            </nav>
+        </header>
 
-  <!-- Store Section -->
-  <section id="store" class="active">
-    <h2>Products</h2>
-    <div id="product-list"></div>
-  </section>
+        <!-- Store Section -->
+        <section id="store" class="section active">
+            <h2 class="section-title">
+                <i class="fas fa-boxes"></i> Product Inventory
+            </h2>
+            <div id="products-grid" class="products-grid">
+                <!-- Products will be loaded here -->
+            </div>
+        </section>
 
-  <!-- Tray Section -->
-  <section id="tray">
-    <h2>My Tray</h2>
-    <div id="tray-items"></div>
-    <p><strong>Total:</strong> <span id="tray-total">0</span> KES</p>
-    <button onclick="finalizeTray()">Finalize Purchase</button>
-  </section>
+        <!-- Expenses Section -->
+        <section id="expenses" class="section">
+            <h2 class="section-title">
+                <i class="fas fa-calculator"></i> Expense Tracker
+            </h2>
+            
+            <div class="form-container">
+                <form id="expense-form">
+                    <div class="form-grid">
+                        <input type="text" id="expense-name" class="form-input" placeholder="Expense Name" required>
+                        <div class="currency-input-group">
+                            <input type="number" id="expense-amount" class="form-input" placeholder="Amount" required step="0.01">
+                            <select id="expense-currency" class="form-input currency-select">
+                                <option value="KES">KES</option>
+                                <option value="USD">USD</option>
+                                <option value="EUR">EUR</option>
+                                <option value="GBP">GBP</option>
+                            </select>
+                        </div>
+                        <input type="date" id="expense-date" class="form-input" required> 
+                        <select id="expense-category" class="form-input" required><br> 
+                            <option value="">Select Category</option>
+                            <option value="Stock">Stock Purchase</option>
+                            <option value="Rent">Rent</option>
+                            <option value="Salaries">Salaries</option>
+                            <option value="Utilities">Utilities</option>
+                            <option value="Marketing">Marketing</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+                    <div class="conversion-info" id="conversion-info" style="display: none;">
+                        <small>Converting to KES...</small>
+                    </div>
+                    <button type="submit" class="submit-btn">
+                        <i class="fas fa-plus"></i> Add Expense
+                    </button>
+                </form>
+            </div>
 
-  <!-- Expense Tracker Section -->
-  <section id="tracker">
-    <h2>Expense Tracker</h2>
-    <form id="expense-form">
-      <input type="text" id="expense-name" placeholder="Expense Name" required>
-      <input type="number" id="expense-amount" placeholder="Amount (KES)" required>
-      <input type="date" id="expense-date" required>
-      <select id="expense-category">
-        <option value="Stock">Stock</option>
-        <option value="Rent">Rent</option>
-        <option value="Salaries">Salaries</option>
-        <option value="Utilities">Utilities</option>
-      </select>
-      <button type="submit">Add Expense</button>
-    </form>
+            <div class="expense-list" id="expense-list">
+                <!-- Expenses will be loaded here -->
+            </div>
 
-    <ul id="expense-list"></ul>
-    <canvas id="expenseChart"></canvas>
-  </section>
+            <div class="chart-container">
+                <h3>Expenses by Category</h3>
+                <canvas id="expense-chart" width="400" height="200"></canvas>
+            </div>
+        </section>
 
-  <!-- Profit & Loss Section -->
-  <section id="report">
-    <h2>Profit & Loss Report</h2>
-    <p><strong>Total Revenue:</strong> <span id="revenue">0</span> KES</p>
-    <p><strong>Total Expenses:</strong> <span id="expenses">0</span> KES</p>
-    <p><strong>Net Profit/Loss:</strong> <span id="net">0</span> KES</p>
+        <!-- Reports Section -->
+        <section id="reports" class="section">
+            <h2 class="section-title">
+                <i class="fas fa-chart-pie"></i> Business Reports
+            </h2>
+            
+            <div class="report-grid">
+                <div class="report-card">
+                    <h3>Total Revenue</h3>
+                    <div class="report-value positive" id="total-revenue">0</div>
+                    <p>KES</p>
+                </div>
+                <div class="report-card">
+                    <h3>Total Expenses</h3>
+                    <div class="report-value negative" id="total-expenses">0</div>
+                    <p>KES</p>
+                </div>
+                <div class="report-card">
+                    <h3>Net Profit/Loss</h3>
+                    <div class="report-value neutral" id="net-profit">0</div>
+                    <p>KES</p>
+                </div>
+                <div class="report-card">
+                    <h3>Orders Today</h3>
+                    <div class="report-value neutral" id="orders-today">0</div>
+                    <p>Orders</p>
+                </div>
+            </div>
 
-    <canvas id="reportChart"></canvas>
-  </section>
+            <div class="chart-container">
+                <h3>Profit & Loss Overview</h3>
+                <canvas id="profit-chart"></canvas>
+            </div>
+        </section>
 
-  <script src="script.js"></script>
+        <!-- Tray Overlay -->
+        <div id="tray-overlay" class="tray-overlay">
+            <div class="tray-header">
+                <h3><i class="fas fa-shopping-cart"></i> Shopping Tray</h3>
+                <button class="close-tray" onclick="closeTray()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="tray-content" id="tray-content">
+                <p style="text-align: center; color: var(--gray-color); padding: 50px 0;">
+                    Your tray is empty
+                </p>
+            </div>
+            <div class="tray-footer">
+                <div class="tray-total">
+                    Total: <span id="tray-total">0</span> KES
+                </div>
+                <button class="finalize-btn" onclick="finalizePurchase()">
+                    <i class="fas fa-credit-card"></i> Complete Purchase
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+
+    <!-- JSON Server Setup Instructions -->
+    <!--
+    To use this app with json-server:
+    
+    1. Install json-server globally:
+       npm install -g json-server
+    
+    2. Create a db.json file with the provided structure
+    
+    3. Start the json-server:
+       json-server --watch db.json --port 3000
+    
+    4. The app will automatically connect to http://localhost:3000
+    -->
 </body>
 </html>

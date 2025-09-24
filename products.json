@@ -1,44 +1,545 @@
 {
   "products": [
-    { "id": "1", 
+    {
+      "id": "1",
       "name": "Smartphone",
-      "price": 15000, 
+      "price": 15000,
       "capacity": 20,
-      "sold": 10,
+      "available": 9,
+      "sold": 11,
       "category": "Electronics",
-      "image":"https://bitly.cx/maixm" 
+      "image": "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=300&h=200&fit=crop"
     },
-    { "id": "2",
-      "name": "Laptop", 
+    {
+      "id": "2",
+      "name": "Laptop",
       "price": 60000,
       "capacity": 15,
-      "sold": 7,
+      "available": 3,
+      "sold": 12,
       "category": "Electronics",
-      "image": "https://bitly.cx/y2AP"
+      "image": "https://i0.wp.com/bestsella.co.ke/wp-content/uploads/2024/12/FB_IMG_1735202432723.jpg?fit=1080%2C632&ssl=1"
     },
-    { "id": "3", 
-      "name": "CCTV Camera", 
-      "price": 10000, 
+    {
+      "id": "3",
+      "name": "CCTV Camera",
+      "price": 10000,
       "capacity": 10,
-      "sold": 4,
-      "category": "CCTV",
-      "image":"https://bitly.cx/THJ0"
+      "available": 1,
+      "sold": 9,
+      "category": "Security",
+      "image": "https://vestekict.co.ke/wp-content/uploads/2025/05/ezviz-h9c.png"
     },
-    { "id": "4", 
-      "name": "Headphones", 
-      "price": 3000, 
+    {
+      "id": "4",
+      "name": "Headphones",
+      "price": 3000,
       "capacity": 25,
-      "sold": 6,
+      "available": 16,
+      "sold": 9,
       "category": "Electronics",
-      "image":"https://bitly.cx/ijPwO"
+      "image": "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=300&h=200&fit=crop"
     },
-    { "id": "5", 
-      "name": "Router", 
-      "price": 5000, 
+    {
+      "id": "5",
+      "name": "Router",
+      "price": 5000,
       "capacity": 50,
+      "available": 35,
       "sold": 15,
       "category": "Networking",
-      "image":"https://bitly.cx/I0Xsh"
+      "image": "https://images.unsplash.com/photo-1606904825846-647eb07f5be2?w=300&h=200&fit=crop"
+    },
+    {
+      "id": "6",
+      "name": "Wireless Mouse",
+      "price": 1500,
+      "capacity": 40,
+      "available": 32,
+      "sold": 8,
+      "category": "Electronics",
+      "image": "https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?w=300&h=200&fit=crop"
+    },
+    {
+      "id": "7",
+      "name": "USB Cable",
+      "price": 300,
+      "capacity": 100,
+      "available": 10,
+      "sold": 90,
+      "category": "Accessories",
+      "image": "https://cdn-img.oraimo.com/fit-in/600x600/KE/album/ocd-m32/ocd-m32.png"
+    },
+    {
+      "id": "8",
+      "name": "Power Bank",
+      "price": 4500,
+      "capacity": 30,
+      "available": 21,
+      "sold": 9,
+      "category": "Electronics",
+      "image": "https://cdn-img.oraimo.com/fit-in/600x600/KE/product/2024/06/28/opb-p5271-black.png"
+    },
+    {
+      "id": "9",
+      "name": "Smart Watch",
+      "price": 2500,
+      "capacity": 35,
+      "available": 12,
+      "sold": 23,
+      "category": "Electronics",
+      "image": "https://ke.jumia.is/unsafe/fit-in/500x500/filters:fill(white)/product/69/2538771/1.jpg?9883"
+    },
+    {
+      "id": "10",
+      "name": "Tablet",
+      "price": 50000,
+      "capacity": 10,
+      "available": 2,
+      "sold": 8,
+      "category": "Electronics",
+      "image": "https://ke.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/62/6288562/1.jpg?7151"
+    },
+    {
+      "id": "11",
+      "name": "Vitron TV 55 inch",
+      "price": 35000,
+      "capacity": 16,
+      "available": 8,
+      "sold": 8,
+      "category": "Electronics",
+      "image": "https://ke.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/55/2069603/1.jpg?0546"
+    },
+    {
+      "id": "12",
+      "name": "PlayStation 5",
+      "price": 70000,
+      "capacity": 8,
+      "available": 6,
+      "sold": 2,
+      "category": "Gaming",
+      "image": "https://ke.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/87/7665861/1.jpg?5562"
+    },
+    {
+      "id": "13",
+      "name": "Wireless Keyboard",
+      "price": 1000,
+      "capacity": 30,
+      "available": 20,
+      "sold": 10,
+      "category": "Accessories",
+      "image": "https://ke.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/85/0938323/1.jpg?9361"
+    },
+    {
+      "id": "14",
+      "name": "HP Monitor",
+      "price": 10000,
+      "capacity": 30,
+      "available": 13,
+      "sold": 17,
+      "category": "Accessories",
+      "image": "https://i0.wp.com/bestsella.co.ke/wp-content/uploads/2025/03/FB_IMG_1743401974929.jpg?fit=1080%2C646&ssl=1"
+    },
+    {
+      "id": "15",
+      "name": "Graphic Card",
+      "price": 12000,
+      "capacity": 40,
+      "available": 30,
+      "sold": 10,
+      "category": "Accessories",
+      "image": "https://i0.wp.com/bestsella.co.ke/wp-content/uploads/2025/08/Quadro-K2200.jpg?resize=450%2C410&ssl=1"
+    },
+    {
+      "id": "16",
+      "name": "Bluetooth Speaker",
+      "price": 2800,
+      "capacity": 35,
+      "available": 28,
+      "sold": 7,
+      "category": "Electronics",
+      "image": "https://i0.wp.com/bestsella.co.ke/wp-content/uploads/2025/07/FB_IMG_1753160237030.jpg?fit=1080%2C851&ssl=1"
+    },
+    {
+      "id": "17",
+      "name": "Electric Kettle",
+      "price": 2000,
+      "capacity": 28,
+      "available": 20,
+      "sold": 8,
+      "category": "Home Appliances",
+      "image": "https://ke.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/08/3161972/1.jpg?5990"
+    },
+    {
+      "id": "18",
+      "name": "VR Headset",
+      "price": 5000,
+      "capacity": 22,
+      "available": 14,
+      "sold": 8,
+      "category": "Gaming",
+      "image": "https://ke.jumia.is/unsafe/fit-in/500x500/filters:fill(white)/product/19/4890272/1.jpg?5897"
+    },
+    {
+      "id": "19",
+      "name": "SSD 2TB",
+      "price": 13500,
+      "capacity": 33,
+      "available": 21,
+      "sold": 12,
+      "category": "Electronics",
+      "image": "https://i0.wp.com/bestsella.co.ke/wp-content/uploads/2025/07/FB_IMG_1752818455986.jpg?fit=1080%2C646&ssl=1"
+    },
+    {
+      "id": "20",
+      "name": "APC UPS 650VA 375 Watts",
+      "price": 8500,
+      "capacity": 7,
+      "available": 6,
+      "sold": 1,
+      "category": "Electronics",
+      "image": "https://i0.wp.com/bestsella.co.ke/wp-content/uploads/2025/03/FB_IMG_1742130919768.jpg?fit=1080%2C648&ssl=1"
+    },
+    {
+      "id": "21",
+      "name": "HP Proffessional Top Load Case",
+      "price": 2000,
+      "capacity": 25,
+      "available": 17,
+      "sold": 8,
+      "category": "Accessories",
+      "image": "https://i0.wp.com/bestsella.co.ke/wp-content/uploads/2019/04/74673180_3104714396223148_5232274871047684096_o.jpg?fit=960%2C595&ssl=1"
+    },
+    {
+      "id": "22",
+      "name": "Kaspersky 2024",
+      "price": 4000,
+      "capacity": 31,
+      "available": 18,
+      "sold": 13,
+      "category": "Accessories",
+      "image": "https://i0.wp.com/bestsella.co.ke/wp-content/uploads/2024/04/FB_IMG_1712644090263.jpg?fit=1080%2C751&ssl=1"
+    },
+    {
+      "id": "23",
+      "name": "Canon EOS 400D",
+      "price": 50000,
+      "capacity": 8,
+      "available": 8,
+      "sold": 0,
+      "category": "Electronics",
+      "image": "https://ke.jumia.is/unsafe/fit-in/500x500/filters:fill(white)/product/45/6654713/1.jpg?1913"
+    },
+    {
+      "id": "24",
+      "name": "Ramtons Microwave",
+      "price": 9000,
+      "capacity": 10,
+      "available": 9,
+      "sold": 1,
+      "category": "Home Appliances",
+      "image": "https://ke.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/64/8178771/1.jpg?0965"
+    },
+    {
+      "id": "25",
+      "name": "Fan 18 inch",
+      "price": 3700,
+      "capacity": 21,
+      "available": 10,
+      "sold": 11,
+      "category": "Electronics",
+      "image": "https://ke.jumia.is/unsafe/fit-in/500x500/filters:fill(white)/product/46/7073513/1.jpg?0387"
+    },
+    {
+      "id": "26",
+      "name": "Mika Heater 2000W",
+      "price": 6000,
+      "capacity": 17,
+      "available": 12,
+      "sold": 5,
+      "category": "Electronics",
+      "image": "https://ke.jumia.is/unsafe/fit-in/500x500/filters:fill(white)/product/28/452142/1.jpg?1015"
+    },
+    {
+      "id": "27",
+      "name": "6 Way Extension",
+      "price": 1000,
+      "capacity": 40,
+      "available": 32,
+      "sold": 8,
+      "category": "Electronics",
+      "image": "https://ke.jumia.is/unsafe/fit-in/500x500/filters:fill(white)/product/29/4487662/1.jpg?5691"
+    },
+    {
+      "id": "28",
+      "name": "Logitech C270 Webcam",
+      "price": 3250,
+      "capacity": 22,
+      "available": 12,
+      "sold": 10,
+      "category": "Electronics",
+      "image": "https://ke.jumia.is/unsafe/fit-in/500x500/filters:fill(white)/product/78/869585/1.jpg?3985"
+    },
+    {
+      "id": "29",
+      "name": "Projector",
+      "price": 25000,
+      "capacity": 12,
+      "available": 5,
+      "sold": 7,
+      "category": "Electronics",
+      "image": "https://ke.jumia.is/unsafe/fit-in/500x500/filters:fill(white)/product/02/4704872/1.jpg?1014"
+    },
+    {
+      "id": "30",
+      "name": "TCL Soundbar 220W",
+      "price": 30000,
+      "capacity": 10,
+      "available": 4,
+      "sold": 6,
+      "category": "Electronics",
+      "image": "https://ke.jumia.is/unsafe/fit-in/500x500/filters:fill(white)/product/03/8523523/1.jpg?1687"
+    },
+    {
+      "id": "31",
+      "name": "Drone",
+      "price": 10000,
+      "capacity": 7,
+      "available": 6,
+      "sold": 1,
+      "category": "Electronics",
+      "image": "https://ke.jumia.is/unsafe/fit-in/500x500/filters:fill(white)/product/74/6455523/1.jpg?0974"
+    },
+    {
+      "id": "32",
+      "name": "Mika Washing Machine",
+      "price": 50000,
+      "capacity": 20,
+      "available": 12,
+      "sold": 8,
+      "category": "Home Appliances",
+      "image": "https://ke.jumia.is/unsafe/fit-in/500x500/filters:fill(white)/product/37/2716462/1.jpg?4368"
+    },
+    {
+      "id": "33",
+      "name": "Hisense 94 Liters Fridge",
+      "price": 18000,
+      "capacity": 6,
+      "available": 5,
+      "sold": 1,
+      "category": "Home Appliances",
+      "image": "https://ke.jumia.is/unsafe/fit-in/500x500/filters:fill(white)/product/68/2167382/1.jpg?2022"
+    },
+    {
+      "id": "34",
+      "name": "Mika Dish Washer",
+      "price": 75000,
+      "capacity": 7,
+      "available": 7,
+      "sold": 0,
+      "category": "Home Appliances",
+      "image": "https://ke.jumia.is/unsafe/fit-in/500x500/filters:fill(white)/product/25/3493042/1.jpg?4253"
+    },
+    {
+      "id": "35",
+      "name": "Ailyons Dry Iron Box",
+      "price": 1000,
+      "capacity": 12,
+      "available": 6,
+      "sold": 6,
+      "category": "Home Appliances",
+      "image": "https://ke.jumia.is/unsafe/fit-in/500x500/filters:fill(white)/product/12/1121313/1.jpg?9014"
+    },
+    {
+      "id": "36",
+      "name": "Blender",
+      "price": 1000,
+      "capacity": 10,
+      "available": 7,
+      "sold": 3,
+      "category": "Home Appliances",
+      "image": "https://ke.jumia.is/unsafe/fit-in/500x500/filters:fill(white)/product/72/4731323/1.jpg?7068"
+    },
+    {
+      "id": "37",
+      "name": "Nunix Vacuum Cleaner",
+      "price": 9000,
+      "capacity": 7,
+      "available": 6,
+      "sold": 1,
+      "category": "Home Appliances",
+      "image": "https://ke.jumia.is/unsafe/fit-in/500x500/filters:fill(white)/product/97/8057492/1.jpg?4994"
+    },
+    {
+      "id": "38",
+      "name": "Ramtoms Coffee Maker",
+      "price": 5000,
+      "capacity": 10,
+      "available": 8,
+      "sold": 2,
+      "category": "Home Appliances",
+      "image": "https://ke.jumia.is/unsafe/fit-in/500x500/filters:fill(white)/product/98/2487413/1.jpg?0808"
+    },
+    {
+      "id": "39",
+      "name": "Gas Cooker BUrner",
+      "price": 1200,
+      "capacity": 19,
+      "available": 11,
+      "sold": 8,
+      "category": "Home Appliances",
+      "image": "https://ke.jumia.is/unsafe/fit-in/500x500/filters:fill(white)/product/11/6473603/1.jpg?6966"
+    },
+    {
+      "id": "40",
+      "name": "Rashnik Pressure Cooker",
+      "price": 2400,
+      "capacity": 6,
+      "available": 4,
+      "sold": 2,
+      "category": "Home Appliances",
+      "image": "https://ke.jumia.is/unsafe/fit-in/500x500/filters:fill(white)/product/66/6701361/1.jpg?5623"
+    },
+    {
+      "id": "41",
+      "name": "Set Of 2 Bed Pillows",
+      "price": 700,
+      "capacity": 50,
+      "available": 32,
+      "sold": 18,
+      "category": "Home Appliances",
+      "image": "https://ke.jumia.is/unsafe/fit-in/500x500/filters:fill(white)/product/81/724053/1.jpg?4749"
+    },
+    {
+      "id": "42",
+      "name": "Dawati Biryani 5Kg",
+      "price": 1300,
+      "capacity": 15,
+      "available": 10,
+      "sold": 5,
+      "category": "KItchen",
+      "image": "https://ke.jumia.is/unsafe/fit-in/500x500/filters:fill(white)/product/90/087784/1.jpg?6461"
+    },
+    {
+      "id": "43",
+      "name": "Top Fry Oil 3L",
+      "price": 800,
+      "capacity": 31,
+      "available": 19,
+      "sold": 12,
+      "category": "KItchen",
+      "image": "https://ke.jumia.is/unsafe/fit-in/500x500/filters:fill(white)/product/10/412824/1.jpg?3674"
+    },
+    {
+      "id": "44",
+      "name": "Impact Honey 100% Pure 50g",
+      "price": 600,
+      "capacity": 20,
+      "available": 18,
+      "sold": 2,
+      "category": "KItchen",
+      "image": "https://ke.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/62/6288562/1.jpg?7151"
+    },
+    {
+      "id": "45",
+      "name": "Dairlyland Chocolate",
+      "price": 2500,
+      "capacity": 35,
+      "available": 19,
+      "sold": 16,
+      "category": "KItchen",
+      "image": "https://ke.jumia.is/unsafe/fit-in/500x500/filters:fill(white)/product/22/0736523/1.jpg?0768"
+    },
+    {
+      "id": "46",
+      "name": "Stanley Vaccum Flask",
+      "price": 2700,
+      "capacity": 12,
+      "available": 7,
+      "sold": 5,
+      "category": "KItchen",
+      "image": "https://ke.jumia.is/unsafe/fit-in/500x500/filters:fill(white)/product/56/6546523/1.jpg?9180"
+    },
+    {
+      "id": "47",
+      "name": "Peanut Butter Maker",
+      "price": 7500,
+      "capacity": 10,
+      "available": 10,
+      "sold": 0,
+      "category": "Electronics",
+      "image": "https://ke.jumia.is/unsafe/fit-in/500x500/filters:fill(white)/product/21/5137223/1.jpg?5439"
+    },
+    {
+      "id": "48",
+      "name": "Hp USB-C to USB 3.0 Adapter",
+      "price": 2000,
+      "capacity": 40,
+      "available": 24,
+      "sold": 16,
+      "category": "Electronics",
+      "image": "https://i0.wp.com/bestsella.co.ke/wp-content/uploads/2020/01/83012511_3307300265964559_8705899838568398848_o.jpg?fit=960%2C662&ssl=1"
+    }
+  ],
+  "orders": [
+    {
+      "id": "order_1758733706758",
+      "date": "2025-09-24",
+      "items": [
+        {
+          "id": "45",
+          "name": "Dairlyland Chocolate",
+          "price": 2500
+        },
+        {
+          "id": "46",
+          "name": "Stanley Vaccum Flask",
+          "price": 2700
+        },
+        {
+          "id": "48",
+          "name": "Hp USB-C to USB 3.0 Adapter",
+          "price": 2000
+        },
+        {
+          "id": "43",
+          "name": "Top Fry Oil 3L",
+          "price": 800
+        }
+      ],
+      "totalAmount": 8000,
+      "status": "completed"
+    },
+    {
+      "id": "order_1758733728739",
+      "date": "2025-09-24",
+      "items": [
+        {
+          "id": "8",
+          "name": "Power Bank",
+          "price": 4500
+        }
+      ],
+      "totalAmount": 4500,
+      "status": "completed"
+    }
+  ],
+  "expenses": [
+    {
+      "id": "expense_1758733706802",
+      "name": "Auto Stock Cost",
+      "amount": 5600,
+      "date": "2025-09-24",
+      "category": "Stock",
+      "type": "auto"
+    },
+    {
+      "id": "expense_1758733728775",
+      "name": "Auto Stock Cost",
+      "amount": 3150,
+      "date": "2025-09-24",
+      "category": "Stock",
+      "type": "auto"
     }
   ]
 }

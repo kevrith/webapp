@@ -14,7 +14,7 @@ let expenseChart = null;
 let profitChart = null;
 
 // Configuration
-const API_BASE = 'http://localhost:3000';
+const API_BASE = 'https://multi-store-json.onrender.com/';
 const CURRENCY_API = 'https://api.exchangerate-api.com/v4/latest/';
 const LOW_STOCK_THRESHOLD = 5;
 const STOCK_COST_PERCENTAGE = 0.7; // 70% of sales for auto stock cost
@@ -110,9 +110,9 @@ async function apiRequest(endpoint, method = 'GET', data = null) {
             config.body = JSON.stringify(data);
         }
         
-        console.log(` API ${method} request to: ${API_BASE}${endpoint}`);
+        console.log(` API ${method} request to: ${API_BASE}/products ${endpoint}`);
         
-        const response = await fetch(`${API_BASE}${endpoint}`, config);
+        const response = await fetch(`${API_BASE}/products ${endpoint}`, config);
         
         if (!response.ok) {
             throw new Error(`HTTP ${response.status}: ${response.statusText}`);

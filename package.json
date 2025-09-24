@@ -1,10 +1,11 @@
 {
-  "name": "kastra-json-server",
+  "name": "webapp-backend",
   "version": "1.0.0",
   "scripts": {
-    "start": "json-server --watch products.json --port 10000"
+    "start": "json-server --watch products.json --port $PORT"
   },
   "dependencies": {
     "json-server": "^0.17.3"
   }
 }
+

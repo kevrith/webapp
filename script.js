@@ -14,7 +14,7 @@ let expenseChart = null;
 let profitChart = null;
 
 // Configuration
-const API_BASE = 'http://localhost:3000';
+const API_BASE = 'https://webapp-backend.onrender.com"';
 const CURRENCY_API = 'https://api.exchangerate-api.com/v4/latest/';
 const LOW_STOCK_THRESHOLD = 5;
 const STOCK_COST_PERCENTAGE = 0.7; // 70% of sales for auto stock cost

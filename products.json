@@ -85,8 +85,8 @@
       "name": "Smart Watch",
       "price": 2500,
       "capacity": 35,
-      "available": 12,
-      "sold": 23,
+      "available": 11,
+      "sold": 24,
       "category": "Electronics",
       "image": "https://ke.jumia.is/unsafe/fit-in/500x500/filters:fill(white)/product/69/2538771/1.jpg?9883"
     },
@@ -155,8 +155,8 @@
       "name": "Bluetooth Speaker",
       "price": 2800,
       "capacity": 35,
-      "available": 28,
-      "sold": 7,
+      "available": 27,
+      "sold": 8,
       "category": "Electronics",
       "image": "https://i0.wp.com/bestsella.co.ke/wp-content/uploads/2025/07/FB_IMG_1753160237030.jpg?fit=1080%2C851&ssl=1"
     },
@@ -185,8 +185,8 @@
       "name": "SSD 2TB",
       "price": 13500,
       "capacity": 33,
-      "available": 21,
-      "sold": 12,
+      "available": 20,
+      "sold": 13,
       "category": "Electronics",
       "image": "https://i0.wp.com/bestsella.co.ke/wp-content/uploads/2025/07/FB_IMG_1752818455986.jpg?fit=1080%2C646&ssl=1"
     },
@@ -522,6 +522,29 @@
       ],
       "totalAmount": 4500,
       "status": "completed"
+    },
+    {
+      "id": "order_1758742554712",
+      "date": "2025-09-24",
+      "items": [
+        {
+          "id": "9",
+          "name": "Smart Watch",
+          "price": 2500
+        },
+        {
+          "id": "16",
+          "name": "Bluetooth Speaker",
+          "price": 2800
+        },
+        {
+          "id": "19",
+          "name": "SSD 2TB",
+          "price": 13500
+        }
+      ],
+      "totalAmount": 18800,
+      "status": "completed"
     }
   ],
   "expenses": [
@@ -537,6 +560,14 @@
       "id": "expense_1758733728775",
       "name": "Auto Stock Cost",
       "amount": 3150,
+      "date": "2025-09-24",
+      "category": "Stock",
+      "type": "auto"
+    },
+    {
+      "id": "expense_1758742554760",
+      "name": "Auto Stock Cost",
+      "amount": 13160,
       "date": "2025-09-24",
       "category": "Stock",
       "type": "auto"

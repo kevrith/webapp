@@ -18,7 +18,6 @@ const API_BASE = 'http://localhost:3000';
 const CURRENCY_API = 'https://api.exchangerate-api.com/v4/latest/';
 const LOW_STOCK_THRESHOLD = 5;
 const STOCK_COST_PERCENTAGE = 0.7; // 70% of sales for auto stock cost
-const port = Process.env.PORT || 4000;
 
 // Initialize Application
 document.addEventListener('DOMContentLoaded', function() {

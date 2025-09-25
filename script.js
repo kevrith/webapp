@@ -2,7 +2,7 @@
  * Kastra Mini Multistore WebApp - Fixed Version
  * Complete JavaScript Application
  * Author: Kelvin Murithi JOhnson
- * Version: 2.1.0
+ * Version: 2.2.0
  */
 
 // Application State

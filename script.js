@@ -14,9 +14,9 @@ let expenseChart = null;
 let profitChart = null;
 
 // Configuration
-const API_BASE = location.hostname === "localhost" 
-                                        ? "http://localhost:3000"
-                                         :"https://multi-store-json.onrender.com";
+const API_BASE = location.hostname === "localhost" //This code ensures that the API will be used automaticaly in:
+                                        ? "http://localhost:3000" //LocalHost. the local computer with the repo or:
+                                         :"https://multi-store-json.onrender.com"; // ONline where the JSON file is hosted. 
 const CURRENCY_API = 'https://api.exchangerate-api.com/v4/latest/';
 const LOW_STOCK_THRESHOLD = 5;
 const STOCK_COST_PERCENTAGE = 0.7; // 70% of sales for auto stock cost
@@ -268,7 +268,7 @@ function createProductCard(product, stockLevel) {
         <button class="buy-btn ${product.available > 0 ? 'available' : 'sold-out'}" 
                 ${product.available > 0 ? `onclick="addToTray('${product.id}')"` : 'disabled'}>
             <i class="fas ${product.available > 0 ? 'fa-cart-plus' : 'fa-ban'}"></i>
-            ${product.available > 0 ? 'Add to Cart' : 'Sold Out'}
+            ${product.available > 0 ? 'Add to Tray' : 'Sold Out'}
         </button>
     `;
     

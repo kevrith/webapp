@@ -1,6 +1,7 @@
 {
   "name": "webapp-backend",
   "version": "1.0.0",
+  "license": "MIT",
   "scripts": {
     "start": "json-server --host 0.0.0.0 --watch products.json --port $PORT"
   },
